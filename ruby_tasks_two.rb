@@ -1,22 +1,55 @@
 puts("\nЗавдання №2")
-puts("Створити програму Ruby для перетворення речення на свинячу латинь:\n\n")
-def to_pig_latin(sentence)
-  words = sentence.split(/\b/)
-
-  pig_latin_words = words.map do |word|
-    if word =~ /\w+/
-      first_letter = word.slice!(0)
-      word << first_letter.downcase + 'ay'
-    else
-      word
-    end
-  end
-
-  pig_latin_sentence = pig_latin_words.join
-  puts "\nРезультат: #{pig_latin_sentence.capitalize}"
+puts("\nКалькулятор з основними арифметичними операціями")
+def dodavannya(x, y)
+  return x + y
 end
 
-print "Введіть речення, яке ви хочете перетворити на свинячу латинь: "
-user_input = gets.chomp
+def vidnimannya(x, y)
+  return x - y
+end
 
-to_pig_latin(user_input)
+def mnozhennya(x, y)
+  return x * y
+end
+
+def dilennya(x, y)
+  if y != 0
+    return x / y
+  else
+    return "Помилка: ділення на нуль"
+  end
+end
+
+print "Введіть перше число: "
+num1 = gets.chomp.to_f
+
+print "Введіть друге число: "
+num2 = gets.chomp.to_f
+
+puts "Виберіть операцію:"
+puts "1. Додавання"
+puts "2. Віднімання"
+puts "3. Множення"
+puts "4. Ділення"
+print "Ваш вибір: "
+choice = gets.chomp.to_i
+
+case choice
+when 1
+  result = dodavannya(num1, num2)
+  operator = "+"
+when 2
+  result = vidnimannya(num1, num2)
+  operator = "-"
+when 3
+  result = mnozhennya(num1, num2)
+  operator = "*"
+when 4
+  result = dilennya(num1, num2)
+  operator = "/"
+else
+  puts "Невірний вибір операції"
+  exit
+end
+
+puts "#{num1} #{operator} #{num2} = #{result}"
